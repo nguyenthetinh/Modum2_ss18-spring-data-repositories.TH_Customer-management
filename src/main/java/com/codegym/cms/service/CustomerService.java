@@ -2,13 +2,18 @@ package com.codegym.cms.service;
 
 import com.codegym.cms.model.Customer;
 import com.codegym.cms.model.Province;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 
 public interface CustomerService {
 
     Iterable<Customer>findAllByProvince(Province province);
 
-    Iterable<Customer> findAll();
+    Page<Customer> findAllByFirstNameContaining(String firstname, Pageable pageable); //* chuc nang tim kiem //
+
+
+    Page<Customer> findAll(Pageable pageable);  //* tao trang :đổi Iterable thành Page , thêm tham số vào findAll(pageable)
 
     Customer findById(Long id);
 
